@@ -6,20 +6,17 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('requisicions', function (Blueprint $table) {
-            $table->id();
+            $table->id(); // idRequisicion
+            $table->dateTime('fecha');
+            $table->string('estado');
+            $table->foreignId('usuario_id')->nullable()->constrained('users'); // Requisicion (0..1) -> Usuario (1)
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('requisicions');

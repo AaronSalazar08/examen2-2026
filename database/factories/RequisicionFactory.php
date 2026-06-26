@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Requisicion;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -10,15 +11,14 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class RequisicionFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
+    protected $model = Requisicion::class;
+
     public function definition(): array
     {
         return [
-            //
+            'fecha' => fake()->dateTimeThisYear(),
+            'estado' => fake()->randomElement(['pendiente', 'aprobada', 'rechazada']),
+            'usuario_id' => User::factory(),
         ];
     }
 }
