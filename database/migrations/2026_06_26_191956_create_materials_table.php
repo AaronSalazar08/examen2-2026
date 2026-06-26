@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('materials', function (Blueprint $table) {
             $table->id();
+            $table->integer('codigo');
+            $table->string('unidad_medida');
+            $table->string('descripcion');
+            $table->string('ubicacion');
+            $table->foreignId('categoria_id')->constrained('categorias');
             $table->timestamps();
         });
     }
