@@ -9,7 +9,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('unidads', function (Blueprint $table) {
-            $table->id();                  // idUnidad en el dominio
+            $table->id();                
             $table->string('nombre');
             $table->timestamps();
         });
