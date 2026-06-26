@@ -9,3 +9,4 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::post('/insert-material', [MaterialController::class, 'store']);
+Route::put('/update-material/{id}', [MaterialController::class, 'update']);

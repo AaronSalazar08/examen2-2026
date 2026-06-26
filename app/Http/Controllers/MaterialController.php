@@ -22,4 +22,25 @@ class MaterialController extends Controller
 
         return response()->json($material->load('categoria'), 201);
     }
+
+    public function update(Request $request, int $id): JsonResponse
+    {
+        $material = Material::find($id);
+
+        if (!$material) {
+            return response()->json(['message' => 'Material no encontrado.'], 404);
+        }
+
+        $validated = $request->validate([
+            'codigo'        => 'sometimes|integer',
+            'unidad_medida' => 'sometimes|string',
+            'descripcion'   => 'sometimes|string',
+            'ubicacion'     => 'sometimes|string',
+            'categoria_id'  => 'sometimes|integer|exists:categorias,id',
+        ]);
+
+        $material->update($validated);
+
+        return response()->json($material->load('categoria'), 200);
+    }
 }
