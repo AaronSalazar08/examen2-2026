@@ -10,3 +10,4 @@ Route::get('/user', function (Request $request) {
 
 Route::post('/insert-material', [MaterialController::class, 'store']);
 Route::put('/update-material/{id}', [MaterialController::class, 'update']);
+Route::get('/get-materials', [MaterialController::class, 'index']);
